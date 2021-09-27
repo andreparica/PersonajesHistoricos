@@ -1,0 +1,402 @@
+* {
+  /*Manera de hacer reset para que no se vean defectos en otros elementos*/
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /*background-image: url(../imagenes/background.jpg);*/
+  /*background-repeat: no-repeat;*/
+  /*La imagen tome totalmente toda la página*/
+  /*background-size: 100%;*/
+  font-family: 'Hind', sans-serif;
+  font-weight: bold;
+
+}
+
+header {
+  width: 100%;
+  height: 90px;
+  background-color: #721d1d;
+  position: fixed;
+  font-size: 20px;
+  font-family: 'Hind', sans-serif;
+  font-weight: bold;
+  display: flex;
+  /*Centra los items de menú*/
+  align-items: center;
+  /*Logo a la izquierda, demás menú a la derecha*/
+  justify-content: space-between;
+  /*Mantiene el menú fijo, que no se fusione con el resto de los elementos en las secciones*/
+  z-index: 10;
+  
+}
+
+.logo {
+  /*Darle tamaño al logo. No se le pone ancho, toma el automático*/
+  height: 80px;
+  /*Separarlo de la navegación a la derecha*/
+  margin-left: 2%;
+  opacity: 0.8;
+}
+
+ /*.menu {
+  width: auto;
+  margin-top: 10px;
+  margin-right: 5%;
+} */
+
+.menu ul {
+  /*Altera ancho y alto de sus elementos para ajustarse lo mejor posible al espacio disponible*/
+
+  display: flex;
+  list-style: none;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: hsl(36, 100%, 90%);
+  padding: 30px;
+}
+
+.menu ul li a:hover {
+  color:rgb(210, 180, 140);
+}
+
+
+main {
+  /*Indica el tipo de método de posicionamiento, utilizado para un elemento
+Sus valores son: static, relative, absolute, fixed.
+Absolute: Se posiciona en relación con el ancestro anterior con position más cercano. Si
+no tiene nada. Utiliza el posicionamiento del cuerpo de la página, no hace nada. 
+Funciona para textos dentro de imágenes. Es una propiedad molestosa.
+- Relative: Con coordenas (top, left, etc) ajusta la posición lejos de su posición normal.
+Se deja manipular con esas coordenadas */
+
+  /*Hace que se quede al raz del menú de navegación y no se suba*/
+  position: relative;
+  top: 80px;
+}
+
+.gallery-container {
+  /*Para colocarle el título a las imágenes a los hijos, es general. Que se vean ordenados,
+  centrados. Para que las imágenes se ubiquen bien cuando se llamen*/
+  display: flex;
+  flex-direction: row;
+  /*Ocupen el 100%*/
+  width: 100%;
+  /*Vh es medida relativa, depende de la pág, es más flexible a la ventana de nav, viewport. Ancho
+  y altura del contenedor.*/
+  height: 65vh;
+}
+
+div.gallery-container div.gallery-item {
+    /*Abreviatura para el flex-grow. flex-shrink, flex-basis*
+    flex-grow: 1
+    flex- shrick: 0
+    flex-basis: auto
+    Hace que el elemento sea flexible y establece la base flexible en 0 */
+
+    /* - Dice que todos los hijos sean flexibles. Los hijos saben que tienen espacio libre en
+    el contenedor y por lo tanto usarán ese mismo tamaño y se van a ajustar como tal al
+    contenedor. 
+    - Usa el grow para ajustarse y que tengan como un tamaño en específico, se ajustan
+    equilibradamente.*/ 
+    flex: 1;
+    height: 100%;
+    /*Para que salga la manita sobre el elemento*/
+    cursor: pointer;
+    /*Propiedades a la imagen de fondo*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Sen activó este hover aquí para darle propiedades adelante. Ese flex se va a mostrar
+    en ese tiempo. Ease in out: curva de velocidad cuando empieza y termina*/
+    transition: flex 0.5s ease-in-out;
+
+}
+
+.gallery-item span {
+  /*Propiedades a los títulos de los personajes*/
+    color:black;
+    font-weight: 600px;
+    font-size: 30px;
+    /*Arriba y abajo*/
+    padding: 20px 8px;
+    background-color: #d2b48c;
+    opacity: 0.8;
+    /*Transition para que el elemento se desaparezca más adelante. 
+    Primero se coloca la propiedad a modificar, los segunfos y la curva de animación*/
+    transition: opacity 0.8s ease;
+    border-radius: 5px;
+}
+
+div.gallery-container .gallery-item:hover span {
+    /*Se esconde el mouse sobre cada uno de los contenedores, no sobre el span, sino sobre los 
+    contenedor de los item y sus span.
+    - Aquí ya se activa ese hover sobre ese spam. Es para todo el contenedor e hijos. Si
+    fuese para el texto, solo se colocaría en span*/
+    opacity: 0;
+
+}
+
+.gallery-container .gallery-item:hover {
+  /*Efecto para cada contenedor, como un zoom de ancho.
+  Flex grow: Indica el factor de crecimiento del item respecto al resto.
+  Flex-shrick: Indica el factor decrecimiento del item respecto al resto.
+  Flex-basis: Define el tamaño por defecto de base (unidades, porcentajes, tamaño de ancho)
+  Propiedades Flex: Sirven de atajo para estas 3 propiedades de los item hijos
+  flex: 6 3 auto; */
+  
+  /*Se va a agrandar*/
+  flex: 3;
+
+}
+
+.gallery-container .gallery-item.g-item-1 {
+  background-image: url(../imagenes/nefertiti.jpg);
+}
+
+.gallery-container .gallery-item.g-item-2 {
+  background-image: url(../imagenes/tutankamon.jpg);
+}
+
+.gallery-container .gallery-item.g-item-3 {
+  background-image: url(../imagenes/cleopatra.jpg);
+}
+
+.gallery-container .gallery-item.g-item-4 {
+  background-image: url(../imagenes/ahhotep.jpg);
+}
+
+.gallery-container .gallery-item.g-item-5 {
+  background-image: url(../imagenes/ramses\ ii.jpg);
+}
+
+h2 {
+  /*margin: 10px;
+  padding: 10%;*/
+  text-align: center;
+  font-size: 40px;
+  padding: 130px 20px 50px 20px;
+  font-weight: bold;
+  color: #2e0c0c;
+  font-family: 'Cabin', sans-serif;
+
+}
+
+/*h2 .dimensiones {
+  padding: 100px 20px 20px 20px;
+}*/
+
+.classh2 {
+
+padding: 50px 20px 50px 20px;
+font-weight: bold;
+padding-top: 7%;
+
+}
+
+.box-content {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.section1 {
+  background-image: url(../imagenes/fondo2.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.galeria {
+  width: 32%;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 10px;
+  transition: all 300ms;
+  margin-bottom: 20px;
+
+}
+
+.galeria:hover {
+  transform: scale(1.03);
+  border-style: groove;
+  border-color:#fff8dc; 
+}
+
+.content-img {
+  width: 100%;
+  height: 300px;
+}
+
+.content-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.galeria > h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  background-color:#a52a2a;
+  opacity: 0.9;
+  color:hsl(36, 100%, 90%);
+  font-family: 'Cabin', sans-serif;
+}
+
+.galeria > p {
+  text-align: center;
+}
+
+/*.content-img img:hover {
+  border: 1px solid cornsilk;
+  transform: rotate(-3deg);
+  
+  }*/
+
+
+.section2 {
+  background-image: url(../imagenes/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  }
+
+.gallery-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.gallery-content img:hover {
+  border: 1px solid #fff8dc;
+  transform: rotate(-3deg);
+}
+
+.text-img {
+  width: 30%;
+  margin: 15px;
+  object-fit: cover;
+  padding-bottom: 40px;
+
+}
+
+.section3 {
+  background-image: url(../imagenes/background2.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  }
+
+.text-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  
+}
+
+.text-img p {
+  margin-top: 5;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fff8dc;
+  opacity: 0.8;
+
+}
+
+.content-videos {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.iframes {
+  width: 40%;
+  margin: 25px;
+}
+
+.iframes p{
+    margin-top: 5;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #721d1d;
+    opacity: 0.9;
+    color:hsl(36, 100%, 90%);
+  
+  }
+
+
+.container-footer {
+  background-color: #721d1d;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  text-align: center;
+  color: hsl(36, 100%, 90%);
+  padding-top: 10px;
+  /*margin-top: 5%;*/
+
+}
+
+.bit {
+  padding-left: 2%;
+}
+
+.contacto {
+  padding-left: 20%;
+
+}
+
+.redes {
+  padding-left: 20%;
+
+
+}
+
+.redes a {
+  display: inline-flex;
+  color: #ffffff;
+  height: 48px;
+  width: 48px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 50%;
+  margin: 0 6px;
+  transition: transform 0.4s;
+}
+
+.redes a:hover {
+  transform: scale(1.3);
+}
+
+.redes a.facebook {
+  background-color: #3c70a4;
+}
+
+.redes a.instagram {
+  background-color: #c51d34;
+}
+
+.redes a.twitter {
+  background-color: #5bd1d7;
+}
+
+.redes a.youtube {
+  background-color: #ff0000;
+}
+
